@@ -291,8 +291,7 @@ int main()
 {
     Hoge h; // ここでコンストラクタが走る
     printf( "h.val_ is %d^n", h.GetValue() );
-    // ここでデストラクタが走る
-}
+}// ここでデストラクタが走る
 ```
 
 クラスの中で上述のデータの変化を全て包含出来ている事がお分かり頂けたでしょうか
@@ -301,17 +300,79 @@ int main()
 
 ### 継承
 
-作業中
+継承を真面目に説明しだすと、それこそオブジェクト設計の勘所に触れる事になるので、そういうのは取り敢えず置いておきます。先ずはC++のコードを読める事が目標なので。では早速コードを示しましょう
+
+```cpp
+#include <cstdio>
+
+class Base{ // 親クラス(aka.基底クラス)
+protected:
+    const char* base_;
+public:
+    Base() : base_( "Base.base_" )
+    {
+        printf( "Baseオブジェクトが生成されました\n" );
+    }
+    virtual ~Base()
+    {
+        printf( "Baseオブジェクトが破棄されました\n" );
+    }
+    void FuncBase( void )
+    {
+        printf( "base_ : %s\n", base_ );
+    }
+};
+
+class Derived : public Base{ // 子クラス(aka.派生クラス)
+    const char* derived_;
+    // 親から受け継いだbase_も使える
+public:
+    Derived() : derived_( "Derived.derived_" )
+    {
+        printf( "Derivedオブジェクトが生成されました\n" );
+    }
+    virtual ~Derived()
+    {
+        printf( "Derivedオブジェクトが破棄されました\n" );
+    }
+    void FuncDerived( void )
+    {
+        printf( "base_ : %s derived_:%s\n", base_, derived_ );
+    }
+    // 親から受け継いだFuncBase()も使える
+};
+
+int main()
+{
+    { // Baseクラスの生存期間を持たせる為のスコープ
+    	printf( "--- Baseクラス ---\n" );
+        Base b;
+        b.FuncBase();
+    }
+    { // Derivedクラスの生存期間を持たせる為のスコープ
+    	printf( "--- Derivedクラス ---\n" );
+        Derived d;
+        d.FuncBase();
+        d.FuncDerived();
+    }
+}
+```
+
+クラスに親子関係があり、親から変数や関数を受け継いでいるのが分かるでしょうか。ここまでで説明していないキーワードvirtualなるものがデストラクタ関数に付いています。取り敢えず**継承関係を用いる場合のデストラクタは、取り敢えずvirtualを付けて仮想関数としておく**とでも覚えておいて下さい。
+
+### 多態性(ポリモーフィズム)
+
+準備中
 
 ## その他の重要な言語要素
 
 ### 関数/演算子オーバーロード
 
-
+準備中
 
 ### 名前空間(namespace)
 
-
+準備中
 
 # Appendix.色んな言語のオブジェクト指向
 
