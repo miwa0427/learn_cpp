@@ -52,10 +52,10 @@
 
 では、C++の説明を始めます。チャプターに分けていますので、好きなリズムでご覧下さい
 
-1. [chapter1 C++コードに触れてみる](./chapter_1.md)
-2. [chapter2 クラス解説(関数/アクセス/初期化/終了)](chapter_2.md)
-3. [chapter3 クラス解説(継承/多態性)](chapter_3.md)
-4. [chapter4 C++追加要素(オーバーロード)](chapter_4.md)
+1. [chapter1 C++コードに触れてみる](./lecture/chapter_1.md)
+2. [chapter2 クラス解説(関数/アクセス/初期化/終了)](./lecture/chapter_2.md)
+3. [chapter3 クラス解説(継承/多態性)](./lecture/chapter_3.md)
+4. [chapter4 C++追加要素(オーバーロード)](./lecture/chapter_4.md)
 
 # Appendix.色んな言語のオブジェクト指向
 
